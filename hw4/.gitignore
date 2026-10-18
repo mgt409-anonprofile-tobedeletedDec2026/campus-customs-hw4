@@ -1,0 +1,28 @@
+# Secrets
+.env
+*.env
+*.env.txt
+!.env.example
+
+# Course data: never commit the database or product images
+data/
+data.zip
+*.db
+
+# Installed tools and build output
+.venv/
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+
+# Editor / OS clutter
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local-only working files (the site uses the optimized copies in frontend/src/assets/;
+# the ChatGPT transcript is already included in AI_prompts.md)
+Yale Gothic Skyline in Navy Ink.png
+yale_skyline_image_generation_transcript.md

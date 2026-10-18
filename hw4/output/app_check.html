@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Legally Blue: Campus Customs App Check</title>
+<style>
+  :root {
+    --blue: #00356b;
+    --blue-deep: #00254a;
+    --blue-bright: #286dc0;
+    --blue-wash: #eef3f9;
+    --pink: #e0488f;
+    --pink-deep: #b82f71;
+    --pink-wash: #fdeef5;
+    --paper: #fbfaf6;
+    --ink: #15202e;
+    --ink-soft: #4a5566;
+    --rule: #d9dee6;
+    --green: #1d6b3f;
+    --display: "Cormorant Garamond", "Garamond", Georgia, "Times New Roman", serif;
+    --sans: "Libre Franklin", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--blue-bright); }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    position: relative;
+    overflow: hidden;
+    background: var(--blue);
+    color: #fff;
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+  }
+  .cover::before, .cover::after {
+    content: "";
+    position: absolute;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(224, 72, 143, 0.35), transparent 70%);
+  }
+  .cover::before { top: -120px; left: -100px; }
+  .cover::after { bottom: -160px; right: -80px; }
+  .cover-inner { position: relative; max-width: 860px; margin: 0 auto; }
+  .bruiser { width: 132px; height: 132px; margin: 0 auto 1rem; border-radius: 50%; background: #fff; padding: 6px; box-shadow: 0 0 0 4px var(--pink), 0 18px 40px -12px rgba(0,0,0,.45); }
+  .kicker {
+    display: inline-block;
+    margin: 0 0 .9rem;
+    padding: .3rem .9rem;
+    border-radius: 999px;
+    background: var(--pink);
+    font-family: var(--sans);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.05;
+  }
+  h1 em { color: #ffc2de; font-style: italic; }
+  .tagline { margin: .9rem auto 0; max-width: 640px; color: #d5e2f1; font-style: italic; font-size: 1.15rem; }
+  .meta { margin-top: 1.4rem; font-family: var(--sans); font-size: .78rem; letter-spacing: .08em; color: #b9cde4; }
+
+  main { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+
+  /* ---------- Executive summary ---------- */
+  .summary {
+    position: relative;
+    margin: -1.8rem auto 2.5rem;
+    padding: 1.6rem 1.8rem;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-top: 5px solid var(--pink);
+    border-radius: 14px;
+    box-shadow: 0 20px 44px -28px rgba(0, 37, 74, .45);
+  }
+  .summary h2 { margin: 0 0 .3rem; font-family: var(--display); font-weight: 600; font-size: 1.8rem; color: var(--blue); }
+  .summary p { margin: 0 0 1.1rem; color: var(--ink-soft); }
+  .scorecard { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
+  .score { padding: .9rem 1rem; border-radius: 10px; background: var(--blue-wash); text-align: center; }
+  .score b { display: block; font-family: var(--display); font-size: 2rem; line-height: 1; color: var(--blue); }
+  .score span { font-family: var(--sans); font-size: .72rem; letter-spacing: .06em; color: var(--ink-soft); }
+  .score.pink { background: var(--pink-wash); }
+  .score.pink b { color: var(--pink-deep); }
+  .checklist { margin: 1.2rem 0 0; padding: 0; list-style: none; display: grid; gap: .45rem; }
+  .checklist li { display: flex; gap: .7rem; align-items: baseline; font-family: var(--sans); font-size: .9rem; }
+  .checklist a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--rule); }
+  .pass { flex: none; padding: .1rem .55rem; border-radius: 999px; background: #e8f4ec; color: var(--green); font-size: .7rem; font-weight: 700; letter-spacing: .12em; }
+
+  /* ---------- Exhibits ---------- */
+  .exhibit { margin: 0 0 3.2rem; scroll-margin-top: 1rem; }
+  .exhibit-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--ink); padding-bottom: .8rem; margin-bottom: 1.2rem; }
+  .exhibit-label { margin: 0; font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--pink-deep); }
+  .exhibit h2 { margin: .15rem 0 0; font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.1; color: var(--blue); }
+  .stamp {
+    flex: none;
+    transform: rotate(-6deg);
+    padding: .35rem .9rem;
+    border: 3px double var(--green);
+    border-radius: 6px;
+    color: var(--green);
+    font-family: var(--sans);
+    font-weight: 800;
+    letter-spacing: .2em;
+    font-size: .85rem;
+  }
+  .ask { margin: 0 0 1.1rem; padding: .8rem 1rem; border-left: 3px solid var(--pink); background: var(--pink-wash); font-family: var(--sans); font-size: .9rem; }
+  .ask b { color: var(--pink-deep); }
+  figure { margin: 0 0 1.2rem; }
+  figure img { width: 100%; border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 16px 36px -26px rgba(0, 37, 74, .5); background: #fff; }
+  figcaption { margin-top: .55rem; font-family: var(--sans); font-size: .8rem; color: var(--ink-soft); }
+  .pair { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
+  figure a { display: block; cursor: zoom-in; }
+  .zoom-hint { margin: -0.4rem 0 1.2rem; font-family: var(--sans); font-size: .72rem; color: var(--ink-soft); text-align: right; }
+  .proves { margin: 0 0 1rem; padding: 1rem 1.2rem; border-radius: 10px; background: var(--blue-wash); }
+  .proves h3 { margin: 0 0 .3rem; font-family: var(--sans); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--blue-bright); }
+  .proves p { margin: 0; }
+  table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: .85rem; background: #fff; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+  th, td { padding: .6rem .8rem; text-align: left; border-bottom: 1px solid var(--rule); }
+  th { background: var(--blue); color: #fff; font-weight: 600; letter-spacing: .04em; }
+  tr:last-child td { border-bottom: 0; }
+  .match { color: var(--green); font-weight: 700; }
+  .receipt-title { margin: 1.2rem 0 .5rem; font-family: var(--sans); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+
+  /* ---------- Closing ---------- */
+  .closing { margin-top: 1rem; padding: 2rem; border-radius: 14px; background: var(--blue-deep); color: #e6eef8; text-align: center; }
+  .closing p { margin: 0 auto; max-width: 640px; font-family: var(--display); font-style: italic; font-size: 1.4rem; line-height: 1.35; }
+  .closing small { display: block; margin-top: .8rem; font-family: var(--sans); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #ffc2de; font-style: normal; }
+  .fine { margin-top: 2rem; text-align: center; font-family: var(--sans); font-size: .72rem; color: var(--ink-soft); }
+
+  @media (max-width: 760px) {
+    .scorecard { grid-template-columns: 1fr 1fr; }
+    .exhibit-head { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <!-- Handsome Dan as Bruiser: same bulldog as the site, now in a pink bow tie -->
+    <svg class="bruiser" viewBox="0 0 120 120" role="img" aria-label="Handsome Dan in a pink bow tie">
+      <path d="M14 120 C16 98 36 88 60 88 C84 88 104 98 106 120 Z" fill="#00356b"/>
+      <text x="60" y="116" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="16" fill="#fff">Y</text>
+      <path d="M30 36 C18 26 8 38 17 50 C22 45 27 41 34 39 Z" fill="#b98c62" stroke="#1d2433" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M90 36 C102 26 112 38 103 50 C98 45 93 41 86 39 Z" fill="#b98c62" stroke="#1d2433" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M20 60 C18 35 38 22 60 22 C82 22 102 35 100 60 C99 80 85 94 60 95 C35 94 21 80 20 60 Z" fill="#f6f1e8" stroke="#1d2433" stroke-width="2.2"/>
+      <path d="M30 44 C34 36 50 36 54 46 C56 54 50 60 42 60 C33 60 28 52 30 44 Z" fill="#d7b48d"/>
+      <path d="M49 34 Q60 29 71 34" fill="none" stroke="#1d2433" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="43" cy="51" r="5" fill="#1d2433"/><circle cx="77" cy="51" r="5" fill="#1d2433"/>
+      <circle cx="44.6" cy="49.4" r="1.6" fill="#fff"/><circle cx="78.6" cy="49.4" r="1.6" fill="#fff"/>
+      <ellipse cx="60" cy="70" rx="24" ry="15" fill="#fffaf2" stroke="#1d2433" stroke-width="1.4"/>
+      <path d="M50 60 C50 54 70 54 70 60 C70 65 63 67 60 67 C57 67 50 65 50 60 Z" fill="#1d2433"/>
+      <path d="M60 67 L60 72" stroke="#1d2433" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M41 72 C47 81 56 79 60 72 C64 79 73 81 79 72" fill="none" stroke="#1d2433" stroke-width="2" stroke-linecap="round"/>
+      <path d="M48 79 C52 88 68 88 72 79 C66 82 54 82 48 79 Z" fill="#e3d3bf" stroke="#1d2433" stroke-width="1.6"/>
+      <path d="M51.5 80.5 L53.5 75.5 L55.5 81" fill="#fff" stroke="#1d2433" stroke-width="1.2"/>
+      <path d="M64.5 81 L66.5 75.5 L68.5 80.5" fill="#fff" stroke="#1d2433" stroke-width="1.2"/>
+      <!-- pink bow tie -->
+      <path d="M60 99 L46 92 L46 106 Z" fill="#e0488f" stroke="#b82f71" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="M60 99 L74 92 L74 106 Z" fill="#e0488f" stroke="#b82f71" stroke-width="1.2" stroke-linejoin="round"/>
+      <circle cx="60" cy="99" r="3.6" fill="#ffc2de" stroke="#b82f71" stroke-width="1.2"/>
+    </svg>
+    <p class="kicker">Exhibits A&ndash;C &middot; Site Testing</p>
+    <h1>Legally <em>Blue</em></h1>
+    <p class="tagline">The Campus Customs App Check, Yale SOM edition. What, like testing a storefront is hard?</p>
+    <p class="meta">Tested on the live site &middot; Shopper account: J. Peterman (fictional test customer) &middot; Assistant: Handsome Dan, Head of Customer Relations</p>
+  </div>
+</header>
+
+<main>
+
+  <section class="summary" aria-labelledby="exec">
+    <h2 id="exec">Executive summary</h2>
+    <p>Three required checks, run on the live site. Every number Handsome Dan said was compared against the store's database. <strong>All three pass.</strong></p>
+    <div class="scorecard">
+      <div class="score pink"><b>3 / 3</b><span>checks passed</span></div>
+      <div class="score"><b>0</b><span>invented prices or stock</span></div>
+      <div class="score"><b>12</b><span>cards shown for &ldquo;hoodies&rdquo;</span></div>
+      <div class="score pink"><b>3 &rarr; 4</b><span>wishlist after one paw tap</span></div>
+    </div>
+    <p class="zoom-hint" style="text-align:left;margin:1rem 0 0">Tip: click any screenshot to open it full size.</p>
+    <ul class="checklist">
+      <li><span class="pass">PASS</span><a href="#exhibit-a">Exhibit A: Honest inventory (stock and price match the database, fact-check badge shown)</a></li>
+      <li><span class="pass">PASS</span><a href="#exhibit-b">Exhibit B: Dynamic search-result cards (plus wishlist-inspired picks)</a></li>
+      <li><span class="pass">PASS</span><a href="#exhibit-c">Exhibit C: Problem 9 feature: the paw-print wishlist</a></li>
+    </ul>
+  </section>
+
+  <!-- ===================== EXHIBIT A ===================== -->
+  <section class="exhibit" id="exhibit-a">
+    <div class="exhibit-head">
+      <div>
+        <p class="exhibit-label">Exhibit A &middot; Check 1</p>
+        <h2>Honest inventory: Dan quotes stock and price from the database</h2>
+      </div>
+      <span class="stamp">PASS</span>
+    </div>
+    <p class="ask"><b>Asked Handsome Dan</b> (on the Yale Dad Hoodie page): &ldquo;How many larges of this hoodie are left, and what does it cost?&rdquo;</p>
+    <div class="pair">
+      <figure>
+        <a href="app_check_images/inventory.png" target="_blank" rel="noopener"><img src="app_check_images/inventory.png" alt="Product page for the Yale Dad Hoodie showing $68.00, with Handsome Dan's chat reply: there are 20 larges left and it costs $68, plus a green 'Checked against the stockroom' badge."></a>
+        <figcaption>Dan: &ldquo;there are <strong>20 larges</strong> left in the Yale Dad Hoodie, and it costs <strong>$68</strong>.&rdquo; Note the green <strong>&ldquo;&#10003; Checked against the stockroom&rdquo;</strong> fact-check badge.</figcaption>
+      </figure>
+      <figure>
+        <a href="app_check_images/inventory_sizes.png" target="_blank" rel="noopener"><img src="app_check_images/inventory_sizes.png" alt="The same product page's Sizes and Stock grid: XS only 5 left, S only 5 left, M 12 in stock, L 20 in stock, XL 12 in stock, XXL 15 in stock."></a>
+        <figcaption>The product page's own size grid, read straight from the inventory table: <strong>L &middot; 20 in stock</strong>.</figcaption>
+      </figure>
+    </div>
+    <div class="proves">
+      <h3>What this proves</h3>
+      <p>Dan looked the item up with his tools instead of guessing. His stock count and price exactly match the database, and the back-end fact-checker verified both before the reply was allowed to reach the shopper.</p>
+    </div>
+    <p class="receipt-title">Database receipt (queried directly from campus_customs.db)</p>
+    <table>
+      <thead><tr><th>Fact</th><th>Dan said</th><th>Database</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Yale Dad Hoodie &middot; price (<code>catalogue.price</code>)</td><td>$68</td><td>68.0</td><td class="match">&#10003; Match</td></tr>
+        <tr><td>Yale Dad Hoodie &middot; size L (<code>inventory.quantity</code>)</td><td>20 left</td><td>20</td><td class="match">&#10003; Match</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===================== EXHIBIT B ===================== -->
+  <section class="exhibit" id="exhibit-b">
+    <div class="exhibit-head">
+      <div>
+        <p class="exhibit-label">Exhibit B &middot; Check 2</p>
+        <h2>Dynamic search-result cards appear on the page</h2>
+      </div>
+      <span class="stamp">PASS</span>
+    </div>
+    <p class="ask"><b>Asked Handsome Dan</b> (from the Home page): &ldquo;What hoodies do you have?&rdquo;</p>
+    <figure>
+      <a href="app_check_images/search_cards.png" target="_blank" rel="noopener"><img src="app_check_images/search_cards.png" alt="Home page with a 'Handsome Dan's Picks: Hoodies, 12 pieces fetched from the stockroom' section of full product cards at the top, and the chat window showing Dan's reply with small hoodie cards."></a>
+      <figcaption>&ldquo;<strong>Handsome Dan&rsquo;s Picks: Hoodies</strong> &middot; 12 pieces fetched from the stockroom&rdquo; slides in at the top of the page as full catalogue cards (photo, name, catalogue line, price), while the chat keeps small cards too. The shopper never left the Home page.</figcaption>
+    </figure>
+    <div class="proves">
+      <h3>What this proves</h3>
+      <p>The agent returns structured product matches, and the website builds real product cards from them on whatever page the shopper is on. Each card links to that product's own page (large image and full details), and every name and price comes from the database, not from the AI's text.</p>
+    </div>
+
+    <p class="ask"><b>Bonus, same feature, personalized:</b> &ldquo;Based on what I&rsquo;ve saved to my wishlist, what else might I like?&rdquo;</p>
+    <figure>
+      <a href="app_check_images/wishlist_picks.png" target="_blank" rel="noopener"><img src="app_check_images/wishlist_picks.png" alt="'Handsome Dan's Picks: Similar to your wishlist, 6 pieces' with Dan's reply naming the shopper's saved full-zip, Yale Dad hoodie and Saybrook fleece, and suggesting similar layers."></a>
+      <figcaption>Dan reads the shopper&rsquo;s <em>own</em> wishlist (&ldquo;You&rsquo;ve saved a polished Yale full-zip, a Yale Dad hoodie, and a Saybrook fleece&rdquo;) and lays out &ldquo;<strong>Similar to your wishlist</strong>&rdquo; picks on the page.</figcaption>
+    </figure>
+    <div class="proves">
+      <h3>What this proves</h3>
+      <p>The page-card feature works for personalized questions too: the wishlist (Problem 9) feeds Dan's suggestions, and the three items he named match the shopper's saved list in the database.</p>
+    </div>
+  </section>
+
+  <!-- ===================== EXHIBIT C ===================== -->
+  <section class="exhibit" id="exhibit-c">
+    <div class="exhibit-head">
+      <div>
+        <p class="exhibit-label">Exhibit C &middot; Check 3 (Problem 9 feature)</p>
+        <h2>The paw-print wishlist: save an item, find it on the Wishlist page</h2>
+      </div>
+      <span class="stamp">PASS</span>
+    </div>
+    <p class="ask"><b>Did:</b> on the catalogue (filtered to Crewnecks &middot; Cream), tapped the paw print on the Poly Twill Crewneck Arched Yale, then tapped the paw next to Bag in the menu.</p>
+    <div class="pair">
+      <figure>
+        <a href="app_check_images/wishlist_save.png" target="_blank" rel="noopener"><img src="app_check_images/wishlist_save.png" alt="Catalogue filtered to Crewnecks and Cream. The Poly Twill Crewneck Arched Yale card shows a filled blue paw print, and the menu's wishlist paw count reads 4."></a>
+        <figcaption><strong>Step 1:</strong> the paw fills Yale blue (&ldquo;Saved to Wishlist&rdquo;) and the menu&rsquo;s paw count goes from <strong>3 to 4</strong>, without leaving the page. The item-type and color filters (also Problem 9) are visible above.</figcaption>
+      </figure>
+      <figure>
+        <a href="app_check_images/wishlist_page.png" target="_blank" rel="noopener"><img src="app_check_images/wishlist_page.png" alt="J.'s wishlist page showing four saved items, with the newly saved cream Poly Twill crewneck first."></a>
+        <figcaption><strong>Step 2:</strong> the menu paw opens &ldquo;J.&rsquo;s wishlist,&rdquo; with the new crewneck first (newest first) among the 4 saved items.</figcaption>
+      </figure>
+    </div>
+    <div class="proves">
+      <h3>What this proves</h3>
+      <p>Shoppers can save items for later without touching the bag, and the wishlist is saved to their account (4 rows in <code>wishlist_items</code>, newest: <code>poly-twill-crewneck-arched-yale</code>), so it follows them across visits and powers Dan's suggestions.</p>
+    </div>
+  </section>
+
+  <section class="closing">
+    <p>&ldquo;Honest prices, live stock, and a bulldog who checks his facts. The defense rests.&rdquo;</p>
+    <small>Handsome Dan, Esq. &middot; Campus Customs Counsel for Customer Relations</small>
+  </section>
+
+  <p class="fine">Course homework project. Screenshots use only the fictional test account &ldquo;J. Peterman&rdquo; (example.com address); no real customer data appears. Not affiliated with any real retailer.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Campus Customs backend (Python 3.12). Install from the hw4 folder:
+#   .venv\Scripts\pip install -r requirements.txt
+# Minimums are the versions this project was built and tested with.
+fastapi>=0.143
+uvicorn>=0.54
+pydantic-ai-slim[openai]>=2.57
+python-dotenv>=1.2
